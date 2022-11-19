@@ -1265,6 +1265,8 @@ img {vertical-align: middle;}
     background-size: cover;
     background-position: left;
     min-height: 780px;
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) */
+   
   }
 
 
