@@ -139,7 +139,7 @@ button { cursor: pointer; }
 
 :focus-visible { outline-offset: 4px; }
 
-::selection { background-color: var(--white_10); }
+/* ::selection { background-color: var(--white_10); } */
 
 html {
   font-family: var(--ff-roboto);
@@ -1466,6 +1466,7 @@ img {vertical-align: middle;}
   .navbar-list:hover .navbar-link:not(:hover) { color: var(--white-60); }
 
 
+  
 
   /**
    * HERO
