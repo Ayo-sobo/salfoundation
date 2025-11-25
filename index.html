@@ -3,1172 +3,1008 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DrSaveALife - Total health through the power of knowledge.</title>
-  <!-- 
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./sallogo (1).svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./assets/css/contact.css">
+  <title>Doctors' SaveALife Foundation - Total Health Through Knowledge</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- 
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+    :root {
+      --primary-color: #4a90e2;
+      --secondary-color: #5da3f5;
+      --accent-color: #7cb8ff;
+      --text-dark: #2c3e50;
+      --text-light: #ffffff;
+      --bg-light: #f8f9fa;
+    }
 
-  <!-- 
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@300;400;500;700&family=Oswald:wght@600&display=swap"
-    -->
-  <!-- rel="stylesheet"> -->
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: white;
+    }
+
+    header {
+      background: white;
+      color: var(--text-dark);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .donate-btn {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s;
+    }
+
+    .donate-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 8rem 2rem;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero .donate-btn {
+      background: white;
+      color: var(--primary-color);
+    }
+
+    .carousel {
+      position: relative;
+      width: 140%;
+      height: 500px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-item {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .carousel-item.active {
+      opacity: 1;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .carousel-dot.active {
+      background: white;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s;
+      z-index: 10;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .carousel-arrow.prev {
+      left: 10px;
+    }
+
+    .carousel-arrow.next {
+      right: 10px;
+    }
+
+    .founders {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary-color);
+    }
+
+    .founders-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .founder-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 2rem;
+      border: 3px solid var(--bg-light);
+    }
+
+    .founder-img {
+      width: 400px;
+      height: 500px;
+      object-fit: cover;
+      object-position: top;
+      margin: 0 auto 1.5rem;
+      display: block;
+    }
+
+
+    .founder-name {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .founder-signature {
+      font-family: 'Brush Script MT', cursive;
+      font-style: italic;
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin: 1rem 0;
+    }
+
+    .founder-title {
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .about {
+      padding: 5rem 2rem;
+      background: var(--bg-light);
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .highlight-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .features {
+      padding: 4rem 2rem;
+      background: white;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid var(--bg-light);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(45, 106, 79, 0.2);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .icare-shop {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .icare-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .icare-shop h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .shop-features {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .shop-feature {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1.5rem;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .shop-btn {
+      display: inline-block;
+      background: white;
+      color: var(--primary-color);
+      padding: 1rem 3rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .shop-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .app-download {
+      padding: 5rem 2rem;
+      background: white;
+      text-align: center;
+    }
+
+    .app-stores {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--text-dark);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .store-btn:hover {
+      background: var(--primary-color);
+    }
+
+    .store-btn i {
+      font-size: 2.5rem;
+    }
+
+    .store-text {
+      text-align: left;
+    }
+
+    .store-text small {
+      font-size: 0.8rem;
+      display: block;
+    }
+
+    .store-text span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .events {
+      padding: 5rem 2rem;
+      background: var(--bg-light);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid var(--primary-color);
+      transition: transform 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateX(10px);
+    }
+
+    .event-subtitle {
+      color: var(--accent-color);
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-title {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .contact {
+      padding: 5rem 2rem;
+      background: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      background: var(--bg-light);
+      padding: 2rem;
+      border-radius: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item i {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    .contact-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--bg-light);
+      border-radius: 8px;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: background 0.3s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: var(--secondary-color);
+    }
+
+    .map-container {
+      margin-top: 2rem;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    footer {
+      background: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .carousel {
+        height: 300px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .founders-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- 
-    - #HEADER
-  -->
-
-  <header class="header" data-header>
-    <div class="container">
-
-      <!-- <h1>
-         <a href="#" class="logo">DrSaveALife</a> 
-        <img src="./assets/images/doctors-save-a-life-logo2.png" alt="" srcset="">
-      </h1> -->
-
-      <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
-        <ion-icon name="menu-outline"></ion-icon>
-      </button>
-
-      <nav class="navbar" data-navbar>
-
-        <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
-          <ion-icon name="close-outline"></ion-icon>
-        </button>
-
-        <a href="#" class="logo">DrSaveALife Foundation</a>
-
-        <ul class="navbar-list">
-
-          <li>
-            <a href="#home" class="navbar-link" data-nav-link>
-              <span>Home</span>
-
-              <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <!-- <li>
-            <a href="#service" class="navbar-link" data-nav-link>
-              <span>Service</span>
-
-              <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </li> -->
-
-          <!-- <li>
-            <a href="#donate" class="navbar-link" data-nav-link>
-              <span>Donate</span>
-
-              <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </li> -->
-
-          <li>
-            <a href="#about" class="navbar-link" data-nav-link>
-              <span>About</span>
-
-              <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <li>
-            <a href="#event" class="navbar-link" data-nav-link>
-              <span>Events</span>
-
-              <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-          <!-- <li>
-            <a href="#gallery" class="navbar-link" data-nav-link>
-              <span>Gallery</span>
-
-              <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </li> -->
-
-          <li>
-            <a href="#contact" class="navbar-link" data-nav-link>
-              <span>Contact</span>
-
-              <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
-            </a>
-          </li>
-
-         
-        </ul>
-
-      </nav>
-
-      <div class="header-action">
-
-        <!-- <button class="search-btn" aria-label="Search">
-          <i on-icon name="search-outline"></ion-icon>
-        </button> -->
-
-        <a href="https://paystack.com/pay/savealife"><button class="btn btn-primary">
-            <span>Donation</span>
-
-            <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-          </button></a>
-
-      </div>
-
-    </div>
+  <header>
+    <nav>
+      <a href="#home" class="logo">
+        <div class="logo-img">
+          <img src="./sallogo (1).svg" alt="Doctors' SaveALife Foundation Logo">
+        </div>
+        <span>Doctors' SaveALife Foundation</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://paystack.com/pay/savealife" class="donate-btn">Donate Now</a>
+    </nav>
   </header>
 
-
-
-
-
-  <main>
-    <article>
-
-      <!-- 
-        - #HERO
-      -->
-
-      <section class="hero" id="home">
-        <div class="container">
-
-          <p class="section-subtitle">
-            <span></span>
-          </p>
-
-          <h3 class="hero-title">
-            We are dedicated to bringing free healthcare knowledge to everyone through the use of technology/education.
-            <strong></strong>
-          </h3>
-
-          <p class="hero-text">
-
-          </p>
-
-          <a href="https://paystack.com/pay/savealife"><button class="btn btn-primary">
-              <span>Donation</span>
-
-              <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-            </button></a>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #FEATURES
-      -->
-
-      <section class="section features">
-        <div class="container">
-
-          <ul class="features-list">
-
-            <li class="features-item">
-              <div class="item-icon">
-                <ion-icon name="shield-checkmark-outline"></ion-icon>
-              </div>
-
-              <div>
-                <h3 class="h4 item-title">Sponsored Free Care</h3>
-
-                <p class="item-text">
-                  For indigent people
-                  in our rural areas.
-                </p>
-              </div>
-            </li>
-
-            <li class="features-item">
-              <div class="item-icon">
-                <ion-icon name="water-outline"></ion-icon>
-              </div>
-
-              <div>
-                <h3 class="h4 item-title">Sensitization Events</h3>
-
-                <p class="item-text">
-                  We believe in educating people
-                  about their health status.
-                </p>
-              </div>
-            </li>
-
-            <li class="features-item">
-              <div class="item-icon">
-                <ion-icon name="leaf-outline"></ion-icon>
-              </div>
-
-              <div>
-                <h3 class="h4 item-title">Join the Movement</h3>
-
-                <p class="item-text">
-                  Support Doctors SaveAlife
-                  Foundation.
-                </p>
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #ABOUT
-      -->
-
-      <section class="section about" id="about">
-        <div class="container">
-
-          <div class="about-banner">
-
-            <h2 class="deco-title">About Us</h2>
-
-            <!-- <img src="./assets/images/deco-img.png" width="58" height="261" alt="" class="deco-img"> -->
-
-            <div class="banner-row">
-
-              <div class="banner-col">
-                <img src="./assets/images/dir1.jpeg" width="315" height="380" loading="lazy" alt="Tiger"
-                  class="about-img w-100">
-
-                <img src="./assets/images/dirondo.jpeg" width="386" height="250" loading="lazy" alt="Panda"
-                  class="about-img about-img-2 w-100">
-              </div>
-
-              <div class="banner-col">
-                <img src="./assets/images/Kanu.jpeg" width="386" height="250" loading="lazy" alt="Elephant"
-                  class="about-img about-img-3 w-120">
-
-                <img src="./assets/images/chequ.jpeg" width="270" height="380" loading="lazy" alt="Deer"
-                  class="about-img w-100">
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="about-content">
-
-            <p class="section-subtitle">
-
-              <span>Why Us? </span>
-            </p>
-
-            <h2 class="h2 section-title">
-              About <strong>DrSaveALife Foundation</strong>
-            </h2>
-
-            <ul class="tab-nav">
-
-              <!-- <li> mission-vision-nextplan
-                <button class="tab-btn active">Our Mission</button>
-              </li>
-
-              <li>
-                <button class="tab-btn">Our Vision</button>
-              </li>
-
-              <li>
-                <button class="tab-btn">Next Plan</button>
-              </li> -->
-
-            </ul>
-
-            <div class="tab-content">
-
-              <p class="section-text"> <strong class="bold">
-                  Founded in 2010, Doctors SaveAlife Foundation focuses on helping people access to premium healthcare
-                  services. We organize regular health road shows events in the country.
-                </strong>
-              </p>
-
-              <ul class="tab-list">
-
-                <li class="tab-item">
-                  <div class="item-icon">
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                  </div>
-
-                  <p class="tab-text">Foundation For Medical</p>
-                </li>
-
-                <li class="tab-item">
-                  <div class="item-icon">
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                  </div>
-
-                  <p class="tab-text">Foundation for healthcare technology </p>
-                </li>
-
-                <li class="tab-item">
-                  <div class="item-icon">
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                  </div>
-
-                  <p class="tab-text">Foundation of water</p>
-                </li>
-
-                <li class="tab-item">
-                  <div class="item-icon">
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                  </div>
-
-                  <p class="tab-text">Foundation for food</p>
-                </li>
-
-              </ul>
-
-              <!-- <button class="btn btn-secondary">
-                <span>Learn More Us</span>
-
-                <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-              </button> -->
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #CTA
-      -->
-
-      <!-- <section class="section cta">
-        <div class="container">
-
-          <div class="cta-content">
-            <h2 class="h2 section-title">324+ Trusted Global Partners</h2>
-
-            <button class="btn btn-outline">
-              <span>Become a Partner</span>
-
-              <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-            </button>
-          </div>
-
-          <figure class="cta-banner">
-            <img src="./assets/images/cta-banner.jpg" width="520" height="228" loading="lazy" alt="Fox"
-              class="img-cover">
-          </figure>
-
-        </div>
-      </section> -->
-
-
-
-
-
-      <!-- 
-        - #SERVICE
-      -->
-
-      <!-- <section class="section service" id="service" style="background-image: url('./assets/images/service-map.png')">
-        <div class="container">
-
-          <p class="section-subtitle">
-            <img src="./assets/images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
-
-            <span>What We Do</span>
-          </p>
-
-          <h2 class="h2 section-title">
-            We Work Differently to <strong>keep The World Safe</strong>
-          </h2>
-
-          <ul class="service-list">
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <ion-icon name="leaf-outline"></ion-icon>
-                </div>
-
-                <h3 class="h3 card-title">Save Nature</h3>
-
-                <p class="card-text">
-                  Tempor incididunt ut labores
-                  dolore magna suspene
-                </p>
-
-                <a href="#" class="btn-link">
-                  <span>Read More</span>
-
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <ion-icon name="earth-outline"></ion-icon>
-                </div>
-
-                <h3 class="h3 card-title">Save Ecology</h3>
-
-                <p class="card-text">
-                  Tempor incididunt ut labores
-                  dolore magna suspene
-                </p>
-
-                <a href="#" class="btn-link">
-                  <span>Read More</span>
-
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <ion-icon name="flower-outline"></ion-icon>
-                </div>
-
-                <h3 class="h3 card-title">Tree Plantation</h3>
-
-                <p class="card-text">
-                  Tempor incididunt ut labores
-                  dolore magna suspene
-                </p>
-
-                <a href="#" class="btn-link">
-                  <span>Read More</span>
-
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="service-card">
-
-                <div class="card-icon">
-                  <ion-icon name="boat-outline"></ion-icon>
-                </div>
-
-                <h3 class="h3 card-title">Clear Ocean</h3>
-
-                <p class="card-text">
-                  Tempor incididunt ut labores
-                  dolore magna suspene
-                </p>
-
-                <a href="#" class="btn-link">
-                  <span>Read More</span>
-
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section>
-
-
-
-
-
-      
-        - #DONATE
-      -->
-
-      <!-- <section class="section donate" id="donate">
-        <div class="container">
-
-          <ul class="donate-list">
-
-            <li>
-              <div class="donate-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/donate-1.jpg" width="520" height="325" loading="lazy" alt="Elephant"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="progress-wrapper">
-                    <p class="progress-text">
-                      <span>Raised</span>
-
-                      <data value="256">$256</data>
-                    </p>
-
-                    <data class="progress-value" value="83">83%</data>
-                  </div>
-
-                  <div class="progress-box">
-                    <div class="progress"></div>
-                  </div>
-
-                  <h3 class="h3 card-title">Raise Hand To Save Animals</h3>
-
-                  <div class="card-wrapper">
-
-                    <p class="card-wrapper-text">
-                      <span>Goal</span>
-
-                      <data class="green" value="34562">$34562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>Raise</span>
-
-                      <data class="yellow" value="562">$562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>To Go</span>
-
-                      <data class="cyan" value="864">$864</data>
-                    </p>
-
-                  </div>
-
-                  <button class="btn btn-secondary">
-                    <span>Donation</span>
-
-                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-                  </button>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="donate-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/donate-2.jpg" width="520" height="325" loading="lazy" alt="Elephant"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="progress-wrapper">
-                    <p class="progress-text">
-                      <span>Raised</span>
-
-                      <data value="256">$256</data>
-                    </p>
-
-                    <data class="progress-value" value="83">83%</data>
-                  </div>
-
-                  <div class="progress-box">
-                    <div class="progress"></div>
-                  </div>
-
-                  <h3 class="h3 card-title">Raise Hand To Save Animals</h3>
-
-                  <div class="card-wrapper">
-
-                    <p class="card-wrapper-text">
-                      <span>Goal</span>
-
-                      <data class="green" value="34562">$34562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>Raise</span>
-
-                      <data class="yellow" value="562">$562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>To Go</span>
-
-                      <data class="cyan" value="864">$864</data>
-                    </p>
-
-                  </div>
-
-                  <button class="btn btn-secondary">
-                    <span>Donation</span>
-
-                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-                  </button>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="donate-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/donate-3.jpg" width="520" height="325" loading="lazy" alt="Elephant"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="progress-wrapper">
-                    <p class="progress-text">
-                      <span>Raised</span>
-
-                      <data value="256">$256</data>
-                    </p>
-
-                    <data class="progress-value" value="83">83%</data>
-                  </div>
-
-                  <div class="progress-box">
-                    <div class="progress"></div>
-                  </div>
-
-                  <h3 class="h3 card-title">Raise Hand To Save Animals</h3>
-
-                  <div class="card-wrapper">
-
-                    <p class="card-wrapper-text">
-                      <span>Goal</span>
-
-                      <data class="green" value="34562">$34562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>Raise</span>
-
-                      <data class="yellow" value="562">$562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>To Go</span>
-
-                      <data class="cyan" value="864">$864</data>
-                    </p>
-
-                  </div>
-
-                  <button class="btn btn-secondary">
-                    <span>Donation</span>
-
-                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-                  </button>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="donate-card">
-
-                <figure class="card-banner">
-                  <img src="./assets/images/donate-4.jpg" width="520" height="325" loading="lazy" alt="Elephant"
-                    class="img-cover">
-                </figure>
-
-                <div class="card-content">
-
-                  <div class="progress-wrapper">
-                    <p class="progress-text">
-                      <span>Raised</span>
-
-                      <data value="256">$256</data>
-                    </p>
-
-                    <data class="progress-value" value="83">83%</data>
-                  </div>
-
-                  <div class="progress-box">
-                    <div class="progress"></div>
-                  </div>
-
-                  <h3 class="h3 card-title">Raise Hand To Save Animals</h3>
-
-                  <div class="card-wrapper">
-
-                    <p class="card-wrapper-text">
-                      <span>Goal</span>
-
-                      <data class="green" value="34562">$34562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>Raise</span>
-
-                      <data class="yellow" value="562">$562</data>
-                    </p>
-
-                    <p class="card-wrapper-text">
-                      <span>To Go</span>
-
-                      <data class="cyan" value="864">$864</data>
-                    </p>
-
-                  </div>
-
-                  <button class="btn btn-secondary">
-                    <span>Donation</span>
-
-                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-                  </button>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </div>
-      </section> -->
-
-
-
-
-
-      <!-- 
-        - #TESTIMONIALS
-      -->
-
-      <section class="testi">
-
-        <div class="testi-content">
-
-          <h2 class="h2 section-title">
-            What People Say About <strong>Our Organization</strong>
-          </h2>
-
-          <div class="testi-card">
-
-            <figure class="card-avatar">
-              <img src="./assets/images/testi-avatar.png" width="60" height="60" loading="lazy" alt="David S. Neuman">
-            </figure>
-
-            <div>
-              <blockquote class="testi-text">
-                Sed ut perspiciatis unde omnis iste natus error voluptatem accusantium doloremque laudantium totam rem
-                aperiam eaquesa
-                quae abillo inventore veritatis quasi architecto beatae vitae dicta sunt explicabo enimpsam voluptatem
-              </blockquote>
-
-              <h3 class="testi-name">David S. Neuman</h3>
-              <p class="testi-title">Business Manager</p>
-            </div>
-
-          </div>
-
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Total Health Through the Power of Knowledge</h1>
+        <p>We are dedicated to bringing free healthcare knowledge to everyone through technology and education</p>
+        <!-- <a href="https://paystack.com/pay/savealife" class="donate-btn">Support Our Mission</a> -->
+
+        <div style="margin-top: 2rem;">
+          <p style="font-size: 1.1rem; margin-bottom: 1rem;">Get subsidized health devices at <strong>iCare Medical
+              Store</strong></p>
+          <a href="https://icare.drsavealife.com" target="_blank"
+            style="display: inline-block; background: rgba(255, 255, 255, 0.2); color: white; padding: 0.8rem 2rem; border-radius: 25px; text-decoration: none; font-weight: bold; backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.3); transition: all 0.3s;">Visit
+            iCare Store →</a>
         </div>
 
-        <figure style="margin-top: 10%; margin-right:2%" class="testi-banner">
-          <!-- <img src="./assets/images/.jpg" width="960" height="846" loading="lazy" alt="Rhinoceros"
-            class="img-cover"> -->
-
-
-          <div class="slideshow-container">
-
-            <div class="mySlides fade">
-              <!-- <div class="numbertext">1 / 3</div> -->
-              <img src="./assets/images/slide1.jpeg" style="width:100%">
-              <!-- <div class="text">Caption Text</div> -->
-            </div>
-
-            <div class="mySlides fade">
-              <!-- <div class="numbertext">2 / 3</div> -->
-              <img src="./assets/images/slide2.jpeg" style="width:100%">
-              <!-- <div class="text">Caption Two</div> -->
-            </div>
-
-            <div class="mySlides fade">
-              <!-- <div class="numbertext">3 / 3</div> -->
-              <img src="./assets/images/slide3.jpeg" style="width:100%">
-              <!-- <div class="text">Caption Three</div> -->
-            </div>
-
-          </div>
-          <br>
-
-          <div style="text-align:center">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-        </figure>
-
-      </section>
-
-
-
-
-
-      <!-- 
-        - #PARTNER
-      -->
-
-      <section class="section partner">
-        <div class="container">
-
-          <a href="#" class="partner-logo">
-            <img src="./assets/images/partner-1.png" width="157" height="55" loading="lazy" alt="Children Fund"
-              class="gray">
-
-            <img src="./assets/images/partner-1-active.png" width="157" height="55" loading="lazy" alt="Children Fund"
-              class="color">
-          </a>
-
-          <a href="#" class="partner-logo">
-            <img src="./assets/images/partner-2.png" width="163" height="55" loading="lazy" alt="Non Profit Agency"
-              class="gray">
-
-            <img src="./assets/images/partner-2-active.png" width="163" height="55" loading="lazy"
-              alt="Non Profit Agency" class="color">
-          </a>
-
-          <a href="#" class="partner-logo">
-            <img src="./assets/images/partner-3.png" width="149" height="55" loading="lazy" alt="Rise Hand Help Us"
-              class="gray">
-
-            <img src="./assets/images/partner-3-active.png" width="149" height="55" loading="lazy"
-              alt="Rise Hand Help Us" class="color">
-          </a>
-
-          <a href="#" class="partner-logo">
-            <img src="./assets/images/partner-4.png" width="169" height="58" loading="lazy" alt="Helping" class="gray">
-
-            <img src="./assets/images/partner-4-active.png" width="169" height="58" loading="lazy" alt="Helping"
-              class="color">
-          </a>
-
-          <a href="#" class="partner-logo">
-            <img src="./assets/images/partner-5.png" width="211" height="55" loading="lazy" alt="Poor Fund Organization"
-              class="gray">
-
-            <img src="./assets/images/partner-5-active.png" width="211" height="55" loading="lazy"
-              alt="Poor Fund Organization" class="color">
-          </a>
-
-        </div>
-      </section>
-
-
-
-
-
-      <!-- 
-        - #EVENT
-      -->
-
-      <section class="section event" id="event">
-        <div class="container">
-
-          <p class="section-subtitle">
-
-
-            <!-- <span>Events & Program</span> -->
-
-          </p>
-
-          <h2 class="h2 section-title">
-            Our Upcoming<strong>Events and Programs</strong>
-          </h2>
-
-          <ul class="event-list">
-
-            <li>
-              <div class="event-card">
-
-                <time class="card-time" datetime="01-05">
-                  <span class="month"></span>
-
-                  <span class="date"></span>
-                </time>
-
-                <div class="wrapper">
-
-                  <div class="card-content">
-                    <p class="card-subtitle">Dr. Okoye Live</p>
-
-                    <h3 class="card-title">The President DrSaveALife Foundation, Dr Richard Okoye will be having a live session on Facebook </h3>
-
-                    <p class="card-text">
-                      View event for link details. 
-                    </p>
-                  </div>
-
-                  <button class="btn btn-white">
-                    <span>View Events</span>
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                  </button>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card">
-
-                <time class="card-time" datetime="02-23">
-                  <span class="month"></span>
-
-                  <span class="date"></span>
-                </time>
-
-                <div class="wrapper">
-
-                  <div class="card-content">
-                    <p class="card-subtitle">Opening of SaveAlife Hospital, Onne.</p>
-
-                    <h3 class="card-title">Our sister Organization, SaveAlife Mission Hospital will be opening a new branch at Onne, Rivers State.</h3>
-
-                    <p class="card-text">
-                      View event for link details
-                    </p>
-                  </div>
-
-                  <button class="btn btn-white">
-                    <span>View Events</span>
-
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                  </button>
-
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="event-card">
-
-                <time class="card-time" datetime="03-27">
-                  <span class="month"></span>
-
-                  <span class="date"></span>
-                </time>
-
-                <div class="wrapper">
-
-                  <div class="card-content">
-                    <p class="card-subtitle">Opening of SaveAlife Hospital Abuja.</p>
-
-                    <h3 class="card-title">Our Sister Organization, SaveAlife Mission Hospital will be opening a new branch at Abuja.</h3>
-
-                    <p class="card-text">
-                      View event for link details
-                    </p>
-                  </div>
-
-                  <button class="btn btn-white">
-                    <span>View Events</span>
-
-                    <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                  </button>
-
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-          <!-- <button class="btn btn-secondary">
-            <span>Learn More Us</span>
-
-            <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-          </button> -->
-
-        </div>
-      </section>
-
-
-
-
-      <!-- 
-        - #INSTA POST
-      -->
-
-      <!-- <section class="insta-post">
-
-        <ul class="insta-post-list">
-
-          <li class="insta-post-item">
-            <a href="#" class="insta-post-link">
-              <img src="./assets/images/insta-1.jpg" width="320" height="300" loading="lazy" alt="Lion"
-                class="img-cover">
-
-              <ion-icon name="logo-instagram"></ion-icon>
+        <div style="margin-top: 2.5rem;">
+          <p style="font-size: 1rem; margin-bottom: 1rem; opacity: 0.95;">Download MyHomeClinic App</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://play.google.com/store/apps/details?id=com.drsavealife.myhomeclinic" target="_blank"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0, 0, 0, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: all 0.3s;">
+              <i class="fab fa-google-play" style="font-size: 1.5rem;"></i>
+              <span>Google Play</span>
             </a>
-          </li>
-
-          <li class="insta-post-item">
-            <a href="#" class="insta-post-link">
-              <img src="./assets/images/insta-2.jpg" width="320" height="300" loading="lazy" alt="Deer"
-                class="img-cover">
-
-              <ion-icon name="logo-instagram"></ion-icon>
+            <a href="https://apps.apple.com/app/myhomeclinic" target="_blank"
+              style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0, 0, 0, 0.8); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: all 0.3s;">
+              <i class="fab fa-apple" style="font-size: 1.5rem;"></i>
+              <span>App Store</span>
             </a>
-          </li>
-
-          <li class="insta-post-item">
-            <a href="#" class="insta-post-link">
-              <img src="./assets/images/insta-3.jpg" width="320" height="300" loading="lazy" alt="Wild Bear"
-                class="img-cover">
-
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="insta-post-item">
-            <a href="#" class="insta-post-link">
-              <img src="./assets/images/insta-4.jpg" width="320" height="300" loading="lazy" alt="Deer"
-                class="img-cover">
-
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-          <li class="insta-post-item">
-            <a href="#" class="insta-post-link">
-              <img src="./assets/images/insta-5.jpg" width="320" height="300" loading="lazy" alt="Horses"
-                class="img-cover">
-
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li>
-
-        </ul>
-
-      </section> -->
-
-    </article>
-  </main>
-
-
-<!-- 
-  *contact-us
- -->
- <div class="container" id="contact">
-  <div class="content">
-    <div class="left-side">
-      <div class="address details">
-        <i class="fas fa-map-marker-alt"></i>
-        <!-- <div class="topic">Address</div>
-        <div class="text-one">#38 Uyo Street, Rumuomasi</div>
-        <div class="text-two">Port Harcourt</div>
-        <div class="text-two">Rivers State.</div> -->
+          </div>
+        </div>
       </div>
-      <div class="phone details">
-        <i class="fas fa-phone-alt"></i>
-        <div class="topic">Phone</div>
-        <div class="text-one">+234 704 400 0139</div>
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/images/slide1.jpeg" alt="Foundation for Medical Care">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/photo1668769050.jpeg" alt="Community Care">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/Kanu.jpeg" alt="Medical Education">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/images/photo1668769051.jpeg" alt="Healthcare Technology">
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <span class="carousel-dot active" data-slide="0"></span>
+          <span class="carousel-dot" data-slide="1"></span>
+          <span class="carousel-dot" data-slide="2"></span>
+          <span class="carousel-dot" data-slide="3"></span>
+        </div>
       </div>
-      <div class="email details">
-        <i class="fas fa-envelope"></i>
-        <div class="topic">Email</div>
-        <div class="text-one">info@drsavealife.org</div>
-      </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31805.555433694382!2d7.000294932657871!3d4.822435751365463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cdc4fca816cf%3A0x9b08be037332201f!2sSAVEALIFE%20Mission%20Hospital!5e0!3m2!1sen!2sng!4v1669574571317!5m2!1sen!2sng" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <div class="right-side">
-      <div class="topic-text">Send us a message</div>
-      <p>We will like to hear from you!</p> 
-    <form action="#">
-      <div class="input-box">
-        <input type="text" placeholder="Enter your name">
-      </div>
-      <div class="input-box">
-        <input type="text" placeholder="Enter your email">
-      </div>
-      <div class="input-box message-box">
-      <textarea type="text" placeholder="Enter your message"></textarea>
-      </div>
-      <div class="button">
-        <input type="button" value="Send Message">
-      </div>
-    </form>
-  </div>
-  </div>
-</div>
+  </section>
 
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer">
+  <section class="founders" id="founders">
     <div class="container">
+      <div class="founders-grid">
+        <div class="founder-card">
+          <img src="./assets/images/oga.png" alt="Dr. Richard C. Okoye" class="founder-img">
+          <h3 class="founder-name">Dr. Richard C. Okoye</h3>
+          <p class="founder-signature">Dr Richard C. Okoye</p>
+          <p class="founder-title">President & Co-Founder</p>
+          <p style="margin-top: 1rem; color: var(--text-dark);">Leading healthcare innovation and accessible medical
+            services across Nigeria</p>
+        </div>
+        <div class="founder-card">
+          <img src="./assets/images/country.jpg" alt="Barrister Austen Nnadi" class="founder-img">
+          <h3 class="founder-name">Barrister Austen Nnadi</h3>
+          <p class="founder-signature">Austen Nnadi</p>
+          <p class="founder-title">Legal Advisor & Co-Founder</p>
+          <p style="margin-top: 1rem; color: var(--text-dark);">Ensuring legal compliance and advocacy for healthcare
+            rights</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <!-- <ul class="footer-list">
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About Doctors' SaveALife Foundation</h2>
+      <div class="about-content">
+        <p class="about-text">
+          Doctors' Savealife Foundation was founded in 2009 by a team of doctors with a passion to educate our people on
+          preventable death and teaching them what to do where there is no doctor. The Foundation is a medically
+          inclined non-governmental organization with a vision of total health through the power of knowledge and
+          services.
+        </p>
+        <p class="about-text">
+          Health safety begins with the ability to identify health dangers and knowing what to do to avert or manage the
+          challenges should such impose at any point in time. We are owners of Save A Life Mission Hospital worldwide.
+          Our affiliate hospitals with robust healthcare facilities have supported us in giving the best medical
+          treatment and care to teeming Nigerians in need of quality healthcare services.
+        </p>
+        <p class="about-text">
+          Most importantly, those cases that would have otherwise flown abroad can now be treated and managed at the
+          comfort of our homes. We are currently on our intensive campaign to change the life expectancy index of
+          Nigerians from 55 years to 70 by year 2025. This we hope to achieve through concerted and collaborative
+          efforts in being proactive to people's health through relevant knowledge and action-driven commitments.
+        </p>
+        <div class="highlights">
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <h4>Foundation for Medical Care</h4>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <h4>Healthcare Technology</h4>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <h4>Clean Water Access</h4>
+          </div>
+          <div class="highlight-item">
+            <i class="fas fa-check-circle"></i>
+            <h4>Food Security</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-         <li>
-          <a href="#" class="footer-link">Terms of use</a>
-        </li>
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">What We Do</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <i class="fas fa-hand-holding-heart feature-icon"></i>
+          <h3>Sponsored Free Care</h3>
+          <p>Providing quality healthcare services to indigent people in rural areas who cannot afford medical treatment
+          </p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-users feature-icon"></i>
+          <h3>Sensitization Events</h3>
+          <p>Educating communities about health status, preventable diseases, and what to do when there's no doctor</p>
+        </div>
+        <div class="feature-card">
+          <i class="fas fa-heartbeat feature-icon"></i>
+          <h3>Join the Movement</h3>
+          <p>Support Doctors' SaveAlife Foundation in our mission to increase life expectancy and provide quality
+            healthcare</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <li>
-          <a href="#" class="footer-link">Privacy & Policy</a>
-        </li> 
-
-      </ul> -->
-
-      <p class="copyright">
-        Copyright 2022. All Rights Reserved.
-         <!-- <a href="" class="copyright-link">No. 38 Uyo Street, Off Stadium Road, Port Harcourt, Nigeria</a>.  -->
+  <section class="icare-shop" id="icare">
+    <div class="icare-content">
+      <h2><i class="fas fa-shopping-cart"></i> iCare Medical Store</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 1rem;">
+        Get subsidized digital health devices for individuals and organizations
       </p>
+      <div class="shop-features">
+        <div class="shop-feature">
+          <i class="fas fa-heartbeat" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Blood Pressure Monitors</strong>
+        </div>
+        <div class="shop-feature">
+          <i class="fas fa-tint" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Glucometers</strong>
+        </div>
+        <div class="shop-feature">
+          <i class="fas fa-thermometer" style="font-size: 2rem; display: block; margin-bottom: 0.5rem;"></i>
+          <strong>Medical Devices</strong>
+        </div>
+      </div>
+      <p style="margin: 1rem 0;">All prices subsidized by Doctors' SaveAlife Foundation</p>
+      <a href="https://icare.drsavealife.com" class="shop-btn" target="_blank">
+        Visit iCare Store <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
 
+  <section class="app-download">
+    <div class="container">
+      <h2 class="section-title">Download MyHomeClinic App</h2>
+      <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 2rem; color: var(--text-dark);">
+        Access healthcare services, track your health, and connect with medical professionals right from your mobile
+        device
+      </p>
+      <div class="app-stores">
+        <a href="https://play.google.com/store/apps/details?id=com.drsavealife.myhomeclinic" class="store-btn">
+          <i class="fab fa-google-play"></i>
+          <div class="store-text">
+            <small>GET IT ON</small>
+            <span>Google Play</span>
+          </div>
+        </a>
+        <a href="https://apps.apple.com/app/myhomeclinic" class="store-btn">
+          <i class="fab fa-apple"></i>
+          <div class="store-text">
+            <small>Download on the</small>
+            <span>App Store</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="events" id="events">
+    <div class="container">
+      <h2 class="section-title">Upcoming Events & Programs</h2>
+      <div class="events-grid">
+        <div class="event-card">
+          <p class="event-subtitle">Dr. Okoye Live</p>
+          <h3 class="event-title">Facebook Live Session with Dr. Richard Okoye</h3>
+          <p>The President of Doctors' SaveALife Foundation, Dr. Richard Okoye, will be having a live session on
+            Facebook to discuss health awareness and answer questions.</p>
+          <a href="#"
+            style="color: var(--primary-color); font-weight: bold; display: inline-block; margin-top: 1rem;">View Event
+            Details →</a>
+        </div>
+        <div class="event-card">
+          <p class="event-subtitle">Hospital Opening - Onne</p>
+          <h3 class="event-title">SaveAlife Mission Hospital Onne Branch</h3>
+          <p>Our sister organization, SaveAlife Mission Hospital, will be opening a new branch at Onne, Rivers State,
+            expanding access to quality healthcare.</p>
+          <a href="#"
+            style="color: var(--primary-color); font-weight: bold; display: inline-block; margin-top: 1rem;">View Event
+            Details →</a>
+        </div>
+        <div class="event-card">
+          <p class="event-subtitle">Hospital Opening - Abuja</p>
+          <h3 class="event-title">SaveAlife Mission Hospital Abuja Branch</h3>
+          <p>Our sister organization, SaveAlife Mission Hospital, will be opening a new branch in Abuja, bringing
+            premium healthcare to the capital.</p>
+          <a href="#"
+            style="color: var(--primary-color); font-weight: bold; display: inline-block; margin-top: 1rem;">View Event
+            Details →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;">Contact Information</h3>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Phone</strong>
+              <p>+234 704 400 0139</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <p>info@drsavealife.org</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Address</strong>
+              <p>#38 Uyo Street, Rumuomasi<br>Port Harcourt, Rivers State, Nigeria</p>
+            </div>
+          </div>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31805.555433694382!2d7.000294932657871!3d4.822435751365463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1069cdc4fca816cf%3A0x9b08be037332201f!2sSAVEALIFE%20Mission%20Hospital!5e0!3m2!1sen!2sng!4v1669574571317!5m2!1sen!2sng"
+              allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;">Send Us a Message</h3>
+          <p style="margin-bottom: 1.5rem;">We would love to hear from you!</p>
+          <form>
+            <div class="form-group">
+              <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Doctors' SaveALife Foundation. All Rights Reserved.</p>
+      <p style="margin-top: 0.5rem;">Total Health Through the Power of Knowledge</p>
     </div>
   </footer>
 
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
 
+    document.querySelector('.contact-form form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
 
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-item');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const totalSlides = slides.length;
 
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
 
-  <!-- 
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+      if (index >= totalSlides) currentSlide = 0;
+      if (index < 0) currentSlide = totalSlides - 1;
 
-  <!-- 
-    - ionicon link
-  -->
-  <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
 
+    function nextSlide() {
+      currentSlide++;
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide--;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
+      showSlide(currentSlide);
+    }
+
+    document.querySelector('.carousel-arrow.next').addEventListener('click', nextSlide);
+    document.querySelector('.carousel-arrow.prev').addEventListener('click', prevSlide);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+      });
+    });
+
+    setInterval(nextSlide, 5000);
+  </script>
 </body>
 
 </html>
